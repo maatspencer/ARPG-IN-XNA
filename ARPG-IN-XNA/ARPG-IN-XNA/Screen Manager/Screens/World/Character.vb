@@ -27,28 +27,28 @@
             Case 1 ' Down
                 CharoffsetY -= MoveSpeed
 
-                If CharoffsetY <= -10 Then
+                If CharoffsetY <= -32 Then
                     MapY += 1
                     CharoffsetY = 0
                 End If
             Case 2 ' Up
                 CharoffsetY += MoveSpeed
 
-                If CharoffsetY >= 10 Then
+                If CharoffsetY >= 32 Then
                     MapY -= 1
                     CharoffsetY = 0
                 End If
             Case 3 ' Left
                 CharoffsetX += MoveSpeed
 
-                If CharoffsetX >= 10 Then
+                If CharoffsetX >= 32 Then
                     MapX -= 1
                     CharoffsetX = 0
                 End If
             Case 4 ' Right
                 CharoffsetX -= MoveSpeed
 
-                If CharoffsetX <= -10 Then
+                If CharoffsetX <= -32 Then
                     MapX += 1
                     CharoffsetX = 0
                 End If
