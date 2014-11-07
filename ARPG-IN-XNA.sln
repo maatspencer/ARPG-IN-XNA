@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ARPG-IN-XNA", "ARPG-IN-XNA\ARPG-IN-XNA\ARPG-IN-XNA.vbproj", "{5E61C9F4-2659-4FB9-ADE4-E887CA78F86B}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "ARPG-IN-XNAContent", "ARPG-IN-XNA\ARPG-IN-XNAContent\ARPG-IN-XNAContent.contentproj", "{B76BB955-D571-4A86-B887-76F161E9A56C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E61C9F4-2659-4FB9-ADE4-E887CA78F86B}.Debug|x86.ActiveCfg = Debug|x86
+		{5E61C9F4-2659-4FB9-ADE4-E887CA78F86B}.Debug|x86.Build.0 = Debug|x86
+		{5E61C9F4-2659-4FB9-ADE4-E887CA78F86B}.Release|x86.ActiveCfg = Release|x86
+		{5E61C9F4-2659-4FB9-ADE4-E887CA78F86B}.Release|x86.Build.0 = Release|x86
+		{B76BB955-D571-4A86-B887-76F161E9A56C}.Debug|x86.ActiveCfg = Debug|x86
+		{B76BB955-D571-4A86-B887-76F161E9A56C}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
