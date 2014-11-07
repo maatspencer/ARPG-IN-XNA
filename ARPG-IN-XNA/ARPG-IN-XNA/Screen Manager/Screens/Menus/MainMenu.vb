@@ -56,7 +56,7 @@
                         If Input.Click = True Then
                             Select Case X
                                 Case 0
-                                    Process.Start("https://www.kabam.com/support/support-redirect?game=realm-of-the-mad-god")
+                                    Process.Start("https://github.com/maat7043/ARPG-IN-XNA")
                                 Case 1
                                 Case 2
                                     ScreenManager.UnloadScreen("TitleScreen")
