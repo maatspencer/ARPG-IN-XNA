@@ -11,6 +11,8 @@
     Private MousePos As String = ""
     Private FromCenter As String = ""
     Private IsClick As String = ""
+    Private clickTime As Integer
+    Private testVar As String = ""
 
     Private BGRect As Rectangle
 
@@ -51,13 +53,18 @@
         End If
         MousePos = "( " & Input.mMapX & " , " & Input.mMapY & " )"
         FromCenter = "( " & Input.FromCenterX & " , " & Input.FromCenterY & " )"
-        TextHeight = Fonts.Arial_8.MeasureString(fps).Y * 6
-        BGRect = New Rectangle(0, 0, Textwidth + 20, TextHeight + 20)
+
         If Input.Click = True Then
+            IsClick = "Click!"
+            clickTime = Globals.GameTime.TotalGameTime.TotalMilliseconds + 200
+        ElseIf clickTime > Globals.GameTime.TotalGameTime.TotalMilliseconds Then
             IsClick = "Click!"
         Else
             IsClick = "False"
         End If
+
+        TextHeight = Fonts.Arial_8.MeasureString(fps).Y * 6
+        BGRect = New Rectangle(0, 0, Textwidth + 20, TextHeight + 20)
 
     End Sub
 
@@ -74,7 +81,7 @@
         End If
 
         Globals.SpriteBatch.Begin()
-        Globals.SpriteBatch.Draw(Textures.WhiteSquare, BGRect, Color.Turquoise * 0.6F)
+        Globals.SpriteBatch.Draw(Textures.WhiteSquare, BGRect, Color.Turquoise * 0.7F)
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, fpsText, New Vector2(10, 10), Color.White)
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, Screens, New Vector2(10, 22), Color.White)
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, FocusScreen, New Vector2(10, 34), Color.White)
