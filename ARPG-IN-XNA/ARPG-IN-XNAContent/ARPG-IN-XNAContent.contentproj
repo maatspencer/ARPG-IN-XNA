@@ -100,11 +100,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="GFX\TitleScreen\TitleScreen.png">
-      <Name>TitleScreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="GFX\TitleScreen\TransStarMenu.png">
       <Name>TransStarMenu</Name>
       <Importer>TextureImporter</Importer>
@@ -143,6 +138,13 @@
   <ItemGroup>
     <Compile Include="GFX\Forms\registerForm.png">
       <Name>registerForm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GFX\TitleScreen\TitleScreen.png">
+      <Name>TitleScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

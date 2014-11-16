@@ -1,6 +1,6 @@
 ﻿Public Class Input
-    Shared CurrentKeystate As KeyboardState
-    Shared LastKeyState As KeyboardState
+    Public Shared CurrentKeystate As KeyboardState
+    Public Shared LastKeyState As KeyboardState
 
     Public Shared CurrentMouseState As MouseState
     Public Shared LastMouseState As MouseState

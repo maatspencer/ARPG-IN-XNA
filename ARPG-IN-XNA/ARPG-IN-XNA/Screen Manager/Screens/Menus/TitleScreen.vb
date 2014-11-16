@@ -154,7 +154,7 @@
         End If
 
         ' Version Number
-        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "RotMG " & Information.Version, New Vector2(5, 585), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "ARPG-IN-XNA " & Information.Version, New Vector2(5, 585), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
 
         Globals.SpriteBatch.End()
     End Sub
