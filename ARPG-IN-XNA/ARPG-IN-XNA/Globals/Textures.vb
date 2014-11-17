@@ -9,6 +9,7 @@
     Public Shared forgotPasswordForm As Texture2D
 
     'Title Screen
+    Public Shared Scrolling As Texture2D
     Public Shared TitleScreen As Texture2D
     Public Shared BlankStar As Texture2D
     Public Shared StarsMenu As Texture2D
@@ -34,6 +35,7 @@
         forgotPasswordForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/forgotPasswordForm")
 
         'Title Screen
+        Scrolling = Globals.Content.Load(Of Texture2D)("GFX/TitleScreen/Scrolling")
         TitleScreen = Globals.Content.Load(Of Texture2D)("GFX/TitleScreen/TitleScreen")
         BlankStar = Globals.Content.Load(Of Texture2D)("GFX/TitleScreen/BlankStar")
         StarsMenu = Globals.Content.Load(Of Texture2D)("GFX/TitleScreen/StarsMenu")

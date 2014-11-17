@@ -9,6 +9,7 @@
     Private ovrLogout = False
     Private ovrLogin = False
     Private ovrRegister = False
+    Private scrollX As Integer = 0
     Public Shared ovrForm = False
 
     Public Sub New()
@@ -16,6 +17,9 @@
         State = ScreenState.Active
     End Sub
     Public Overrides Sub HandleInput()
+        ' Adjust Scroll
+        scrollX = (scrollX + 1) Mod 1120
+
         ' Toggle Sound
         If Input.mMapX >= 0 And Input.mMapX <= 32 Then
             If Input.mMapY >= 0 And Input.mMapY <= 32 Then
@@ -99,7 +103,8 @@
     End Sub
     Public Overrides Sub Draw()
         Globals.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone)
-        Globals.SpriteBatch.Draw(Textures.TitleScreen, New Rectangle(0, 0, Globals.GameSize.X, Globals.GameSize.Y), New Rectangle(0, 0, 800, 600), Color.White)
+
+        Globals.SpriteBatch.Draw(Textures.Scrolling, New Rectangle(0, 0, Globals.GameSize.X, Globals.GameSize.Y), New Rectangle(scrollX, 0, 800, 600), Color.White, 0, New Vector2(0, 0), SpriteEffects.None, 1)
         ' Speaker Icon
         Globals.SpriteBatch.Draw(Textures.Icons, New Rectangle(0, 0, 32, 32), SoundIcon, Color.White)
 
