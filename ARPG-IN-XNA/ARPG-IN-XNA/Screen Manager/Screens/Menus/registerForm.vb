@@ -269,12 +269,11 @@ Public Class registerForm
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 130, 2, 18), Color.LightGray)
             End If
             If passwordActive = True Then
-                Dim cursorLocation = passwordXCord + Fonts.LargeROTMG.MeasureString(passwordString).X * 0.9
+                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.LargeROTMG, 0.9, 260, passwordXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 198, 2, 18), Color.LightGray)
             End If
             If retypeActive = True Then
-                Dim inputStr As String = textHandler.wordWrap(emailString, Fonts.LargeROTMG, 0.9, 100)
-                Dim cursorLocation = retypeXCord + Fonts.LargeROTMG.MeasureString(retypeString).X * 0.9
+                Dim cursorLocation = textHandler.cursorLocation(retypeString, Fonts.LargeROTMG, 0.9, 260, retypeXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 265, 2, 18), Color.LightGray)
             End If
             If monthActive = True Then
