@@ -9,7 +9,7 @@ Public Class Game
 
     Protected Overrides Sub Initialize()
         Me.IsMouseVisible = True
-        Window.AllowUserResizing = True
+        Window.AllowUserResizing = False
 
         Globals.GameSize = New Vector2(800, 600)
         Globals.Graphics.PreferredBackBufferWidth = Globals.GameSize.X
@@ -17,6 +17,10 @@ Public Class Game
         Globals.Graphics.ApplyChanges()
 
         Globals.BackBuffer = New RenderTarget2D(Globals.Graphics.GraphicsDevice, Globals.GameSize.X, Globals.GameSize.Y, False, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents)
+
+        If Not My.Settings.email = "" Then
+            deserializeObject.UserInfo(My.Settings.email)
+        End If
 
         MyBase.Initialize()
     End Sub
@@ -53,7 +57,7 @@ Public Class Game
         Sounds.Update()
 
         ' Information Update
-        Information.Update()
+        Parameters.Update()
     End Sub
 
     Protected Overrides Sub Draw(ByVal gameTime As GameTime)

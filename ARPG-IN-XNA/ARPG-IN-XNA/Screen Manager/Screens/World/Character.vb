@@ -104,7 +104,7 @@
 
     Private Function FetchSpriteSrc(dir As Integer) As Rectangle
         ' Integer Value to set class
-        Dim ClassId As Integer = Information.ClassId
+        Dim ClassId As Integer = Parameters.ClassId
         Select Case dir
             Case 1 ' Down
                 sRect = New Rectangle(CharFrame * 8, 8 + (ClassId * 24), 8, 8)

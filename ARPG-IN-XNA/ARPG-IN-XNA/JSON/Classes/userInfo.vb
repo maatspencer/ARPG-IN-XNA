@@ -1,4 +1,6 @@
 ﻿Public Class userInfo
+
+
     ' User Name
     Public Property username() As String
         Get
@@ -19,7 +21,7 @@
             m_password = value
         End Set
     End Property
-    Private m_password As Boolean
+    Private m_password As String
 
     ' User Email
     Public Property email() As String
@@ -63,7 +65,7 @@
             m_emailOffers = value
         End Set
     End Property
-    Private m_emailOffers As Integer
+    Private m_emailOffers As Boolean
 
     ' Creation Date
     Public Property CreatedDate() As DateTime

@@ -1,8 +1,9 @@
 ﻿Imports Newtonsoft.Json
 Imports System.IO
 Public Class serializeObject
-    Public Sub userInfo(data As userInfo)
-        ' Serialize JSON to a String
-        File.WriteAllText(My.Application.Info.DirectoryPath & "/accounts/" & data.username & ".json", JsonConvert.SerializeObject(data))
+    Public Shared Sub userInfo(data As userInfo)
+        ' Write user information to a file for caching
+        My.Computer.FileSystem.CreateDirectory(My.Application.Info.DirectoryPath & "/accounts")
+        File.WriteAllText(My.Application.Info.DirectoryPath & "/accounts/" & data.email & ".json", JsonConvert.SerializeObject(data))
     End Sub
 End Class

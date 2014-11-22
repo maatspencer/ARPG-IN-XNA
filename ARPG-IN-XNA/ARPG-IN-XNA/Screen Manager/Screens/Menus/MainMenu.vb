@@ -98,7 +98,7 @@
         Dim MenuX As Integer = MenuPos.X + 137
         Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(MenuPos.X, MenuPos.Y, MenuSize.X, MenuSize.Y), New Color(97, 97, 97))
         For X = 0 To 4
-            If IsOver(X) = True Then Color = Color.PaleGoldenrod Else If X = 0 Then Color = Color.DarkOrange Else Color = Color.White
+            If IsOver(X) = True Then Color = Color.LightBlue Else If X = 0 Then Color = Color.SteelBlue Else Color = Color.White
             If X = MenuSelect Then
                 Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Entries.Item(X).Text, New Vector2(MenuX - (Fonts.LargeROTMG.MeasureString(X).X * (Scale - 1)) / 2, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).Y) / 2 - 7), Color, 0, New Vector2(0, 0), Scale, SpriteEffects.None, 1)
             ElseIf Entries.Item(X).Enabled = True Then

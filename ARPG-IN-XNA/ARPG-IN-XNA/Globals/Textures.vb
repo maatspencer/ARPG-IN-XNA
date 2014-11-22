@@ -2,6 +2,9 @@
     'General
     Public Shared WhiteSquare As Texture2D
     Public Shared Icons As Texture2D
+    Public Shared errorFrameLarge As Texture2D
+    Public Shared errorFrameMonthDay As Texture2D
+    Public Shared errorFrameYear As Texture2D
 
     'Forms
     Public Shared registerForm As Texture2D
@@ -28,6 +31,9 @@
         'General
         WhiteSquare = Globals.Content.Load(Of Texture2D)("GFX/General/WhiteSquare")
         Icons = Globals.Content.Load(Of Texture2D)("GFX/General/Icons")
+        errorFrameLarge = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameLarge")
+        errorFrameMonthDay = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameMonthDay")
+        errorFrameYear = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameYear")
 
         'Forms
         loginForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/loginForm")

@@ -57,120 +57,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property userName() As String
+        Public Property email() As String
             Get
-                Return CType(Me("userName"),String)
+                Return CType(Me("email"),String)
             End Get
             Set
-                Me("userName") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property userEmail() As String
-            Get
-                Return CType(Me("userEmail"),String)
-            End Get
-            Set
-                Me("userEmail") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property playerStars() As Integer
-            Get
-                Return CType(Me("playerStars"),Integer)
-            End Get
-            Set
-                Me("playerStars") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property guildName() As String
-            Get
-                Return CType(Me("guildName"),String)
-            End Get
-            Set
-                Me("guildName") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property guildRank() As Integer
-            Get
-                Return CType(Me("guildRank"),Integer)
-            End Get
-            Set
-                Me("guildRank") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property playerFame() As Integer
-            Get
-                Return CType(Me("playerFame"),Integer)
-            End Get
-            Set
-                Me("playerFame") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property playerExp() As Integer
-            Get
-                Return CType(Me("playerExp"),Integer)
-            End Get
-            Set
-                Me("playerExp") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property userPassword() As String
-            Get
-                Return CType(Me("userPassword"),String)
-            End Get
-            Set
-                Me("userPassword") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property userDOB() As String
-            Get
-                Return CType(Me("userDOB"),String)
-            End Get
-            Set
-                Me("userDOB") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property userGold() As Integer
-            Get
-                Return CType(Me("userGold"),Integer)
-            End Get
-            Set
-                Me("userGold") = value
+                Me("email") = value
             End Set
         End Property
     End Class

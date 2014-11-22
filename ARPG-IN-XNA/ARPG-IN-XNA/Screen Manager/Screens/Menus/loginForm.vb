@@ -169,14 +169,14 @@
         If ovrCancel = False Then
             Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.LightGoldenrodYellow, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Sign-In Button
         If ovrSignIn = False Then
             Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightGoldenrodYellow, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
 
@@ -190,14 +190,14 @@
 
         ' Forgot password
         If ovrForgot = True Then
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Forgot your password? Click here", New Vector2(278, 360), Color.LightGoldenrodYellow, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
+            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Forgot your password? Click here", New Vector2(278, 360), Color.LightBlue, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
         Else
             Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Forgot your password? Click here", New Vector2(278, 360), Color.LightGray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
         End If
 
         ' New User
         If ovrNewUser = True Then
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "New user? Click here to Register", New Vector2(278, 380), Color.LightGoldenrodYellow, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
+            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "New user? Click here to Register", New Vector2(278, 380), Color.LightBlue, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
         Else
             Globals.SpriteBatch.DrawString(Fonts.Arial_8, "New user? Click here to Register", New Vector2(278, 380), Color.LightGray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
         End If

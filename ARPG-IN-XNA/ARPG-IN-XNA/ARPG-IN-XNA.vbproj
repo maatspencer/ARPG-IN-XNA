@@ -97,11 +97,12 @@
   <ItemGroup>
     <Compile Include="Globals\Fonts.vb" />
     <Compile Include="Globals\Globals.vb" />
-    <Compile Include="Globals\Information.vb" />
+    <Compile Include="Globals\Parameters.vb" />
     <Compile Include="Globals\Input.vb" />
     <Compile Include="Globals\textHandler.vb" />
+    <Compile Include="JSON\deserializeObject.vb" />
     <Compile Include="JSON\serializeObject.vb" />
-    <Compile Include="JSON\userInfo.vb" />
+    <Compile Include="JSON\Classes\userInfo.vb" />
     <Compile Include="Globals\Sounds.vb" />
     <Compile Include="Globals\Textures.vb" />
     <Compile Include="Main\Menus\MenuEntry.vb" />
