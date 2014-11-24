@@ -63,6 +63,13 @@
                                     ScreenManager.UnloadScreen("MainMenu")
                                     ScreenManager.AddScreen(New WorldScreen)
                                 Case 3
+                                    If My.Settings.email = "" Then
+                                        ScreenManager.AddScreen(New registerForm)
+                                        TitleScreen.ovrForm = True
+                                    Else
+                                        ScreenManager.AddScreen(New accountForm)
+                                        TitleScreen.ovrForm = True
+                                    End If
                                 Case 4
                             End Select
                         Else : IsOver(X) = True

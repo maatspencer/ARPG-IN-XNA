@@ -1,19 +1,12 @@
 ﻿Imports System.IO
 Imports Newtonsoft.Json
 
-Public Class loginForm
+Public Class changePasswordForm
     Inherits BaseScreen
 
     ' Buttons
     Private ovrCancel As Boolean = False
-    Private ovrSignIn As Boolean = False
-
-    ' Email
-    Private ovrEmail As Boolean = False
-    Private emailActive As Boolean = True
-    Private emailString As String = ""
-    Private emailXCord As Integer = 285
-    Private emailError As Boolean = False
+    Private ovrSubmit As Boolean = False
 
     ' Password
     Private ovrPassword As Boolean = False
@@ -22,9 +15,19 @@ Public Class loginForm
     Private passwordXCord As Integer = 285
     Private passwordError As Boolean = False
 
-    ' Links
-    Private ovrNewUser As Boolean = False
-    Private ovrForgot As Boolean = False
+    ' New Password
+    Private ovrNew As Boolean = False
+    Private newActive As Boolean = False
+    Private newString As String = ""
+    Private newXcord As Integer = 285
+    Private newError As Boolean = False
+
+    ' Retype Password
+    Private ovrRetype As Boolean = False
+    Private retypeActive As Boolean = False
+    Private retypeString As String = ""
+    Private retypeXcord As Integer = 285
+    Private retypeError As Boolean = False
 
     ' Cursor Variables
     Private Timer As Integer = 0
@@ -34,7 +37,7 @@ Public Class loginForm
     Public Shared textString As String = ""
 
     Public Sub New()
-        Name = "loginForm"
+        Name = "changePassword"
         State = ScreenState.Active
     End Sub
 
@@ -56,51 +59,43 @@ Public Class loginForm
             End If
         End If
 
-        ' Sign-In Button
-        ovrSignIn = False
+        ' Submit Button
+        ovrSubmit = False
         If x >= 458 And x <= 525 Then
             If y >= 415 And y <= 535 Then
-                ovrSignIn = True
-            End If
-        End If
-
-        ' Email Form
-        ovrEmail = False
-        If x >= 278 And x <= 516 Then
-            If y >= 220 And y <= 250 Then
-                ovrEmail = True
+                ovrSubmit = True
             End If
         End If
 
         ' Password Form
         ovrPassword = False
         If x >= 278 And x <= 516 Then
-            If y >= 310 And y <= 340 Then
+            If y >= 220 And y <= 250 Then
                 ovrPassword = True
             End If
         End If
 
-        ' Forgot Link
-        ovrForgot = False
-        If x >= 278 And x <= 442 Then
-            If y >= 360 And y <= 370 Then
-                ovrForgot = True
+        ' New Password Form
+        ovrNew = False
+        If x >= 278 And x <= 516 Then
+            If y >= 310 And y <= 340 Then
+                ovrNew = True
             End If
         End If
 
-        ' New user link
-        ovrNewUser = False
-        If x >= 278 And x <= 435 Then
-            If y >= 380 And y <= 390 Then
-                ovrNewUser = True
+        ' Retype Password Form
+        ovrRetype = False
+        If x >= 278 And x <= 516 Then
+            If y >= 310 And y <= 340 Then
+                ovrRetype = True
             End If
         End If
 
         ' Handle all clicks
         If Input.Click = True Then
 
-            ' Register button
-            If ovrSignIn = True Then
+            ' Submit button
+            If ovrSubmit = True Then
                 deactivateAll()
                 deserializeUserInfo()
 

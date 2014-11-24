@@ -529,10 +529,6 @@ Public Class registerForm
             ' Serialize the object and write to a file
             serializeObject.userInfo(data)
 
-            ' Cache the filename
-            My.Settings.email = data.email
-            My.Settings.Save()
-
             ' Set Globals
             deserializeObject.UserInfo(data.email)
 

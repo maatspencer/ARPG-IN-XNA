@@ -27,5 +27,8 @@ Public Class deserializeObject
         Parameters.userInfo.emailOffers = data.emailOffers
         Parameters.userInfo.createdDate = data.CreatedDate
 
+        My.Settings.email = data.email
+        My.Settings.Save()
+
     End Sub
 End Class

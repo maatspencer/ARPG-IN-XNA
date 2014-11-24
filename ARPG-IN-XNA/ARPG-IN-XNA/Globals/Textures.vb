@@ -5,11 +5,14 @@
     Public Shared errorFrameLarge As Texture2D
     Public Shared errorFrameMonthDay As Texture2D
     Public Shared errorFrameYear As Texture2D
+    Public Shared errorFrameLogin As Texture2D
 
     'Forms
     Public Shared registerForm As Texture2D
     Public Shared loginForm As Texture2D
     Public Shared forgotPasswordForm As Texture2D
+    Public Shared currentAccountForm As Texture2D
+    Public Shared changePasswordForm As Texture2D
 
     'Title Screen
     Public Shared Scrolling As Texture2D
@@ -34,11 +37,14 @@
         errorFrameLarge = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameLarge")
         errorFrameMonthDay = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameMonthDay")
         errorFrameYear = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameYear")
+        errorFrameLogin = Globals.Content.Load(Of Texture2D)("GFX/General/errorFrameLogin")
 
         'Forms
         loginForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/loginForm")
         registerForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/registerForm")
         forgotPasswordForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/forgotPasswordForm")
+        currentAccountForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/currentAccount")
+        changePasswordForm = Globals.Content.Load(Of Texture2D)("GFX/Forms/changePassword")
 
         'Title Screen
         Scrolling = Globals.Content.Load(Of Texture2D)("GFX/TitleScreen/Scrolling")

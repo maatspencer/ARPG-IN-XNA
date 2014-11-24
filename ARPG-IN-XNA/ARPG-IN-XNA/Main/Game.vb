@@ -1,3 +1,4 @@
+Imports System.Windows.Forms
 Public Class Game
     Inherits Microsoft.Xna.Framework.Game
     Private ScreenManager As ScreenManager
@@ -76,6 +77,12 @@ Public Class Game
 
         Globals.SpriteBatch.End()
 
+    End Sub
+
+    Protected Overrides Sub OnExiting(sender As Object, args As EventArgs)
+        ' TODO
+
+        MyBase.OnExiting(sender, args)
     End Sub
 
 End Class

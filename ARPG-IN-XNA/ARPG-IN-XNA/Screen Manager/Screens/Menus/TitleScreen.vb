@@ -168,7 +168,7 @@
         MyBase.Unload()
     End Sub
 
-    Private Sub logout()
+    Public Shared Sub logout()
         ' Remove cached email
         My.Settings.email = ""
         My.Settings.Save()
