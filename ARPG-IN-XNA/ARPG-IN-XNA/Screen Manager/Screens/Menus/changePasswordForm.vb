@@ -105,27 +105,10 @@ Public Class changePasswordForm
                 ScreenManager.UnloadScreen("loginForm")
                 TitleScreen.ovrForm = False
 
-                ' Email Form
-            ElseIf ovrEmail = True Then
-                deactivateAll()
-                emailActive = True
-
                 ' Password Form
             ElseIf ovrPassword = True Then
                 deactivateAll()
                 passwordActive = True
-
-                ' Forgot link
-            ElseIf ovrForgot = True Then
-                deactivateAll()
-                ScreenManager.UnloadScreen("loginForm")
-                ScreenManager.AddScreen(New forgotPassword)
-
-                ' Cancel Button
-            ElseIf ovrNewUser = True Then
-                deactivateAll()
-                ScreenManager.UnloadScreen("loginForm")
-                ScreenManager.AddScreen(New registerForm)
 
                 ' Stray Click
             Else
@@ -147,9 +130,6 @@ Public Class changePasswordForm
         Globals.SpriteBatch.Draw(Textures.loginForm, New Rectangle(X, Y, Width, Height), Color.White)
 
         ' Error Boxes
-        If emailError = True Then
-            Globals.SpriteBatch.Draw(Textures.errorFrameLogin, New Vector2(278, 218), Color.White)
-        End If
         If passwordError = True Then
             Globals.SpriteBatch.Draw(Textures.errorFrameLogin, New Vector2(278, 308), Color.White)
         End If
@@ -162,10 +142,6 @@ Public Class changePasswordForm
 
         ' Draw Cursor at active location
         If drawCur = True Then ' Toggle cursor on and off
-            If emailActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.LargeROTMG, 0.9, 215, emailXCord)
-                Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 225, 2, 18), Color.LightGray)
-            End If
             If passwordActive = True Then
                 Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.LargeROTMG, 0.9, 215, passwordXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 312, 2, 18), Color.LightGray)
@@ -180,34 +156,16 @@ Public Class changePasswordForm
         End If
 
         ' Sign-In Button
-        If ovrSignIn = False Then
+        If ovrSubmit = False Then
             Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
             Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
-
-        ' Email String
-        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(emailXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
-
         ' Password String
-        cutString = textHandler.wordWrap(passwordString, Fonts.LargeROTMG, 0.9, 215)
+        Dim cutString As String = textHandler.wordWrap(passwordString, Fonts.LargeROTMG, 0.9, 215)
         Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(passwordXCord, 307), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
-        ' Forgot password
-        If ovrForgot = True Then
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Forgot your password? Click here", New Vector2(278, 360), Color.LightBlue, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
-        Else
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Forgot your password? Click here", New Vector2(278, 360), Color.LightGray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
-        End If
-
-        ' New User
-        If ovrNewUser = True Then
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "New user? Click here to Register", New Vector2(278, 380), Color.LightBlue, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
-        Else
-            Globals.SpriteBatch.DrawString(Fonts.Arial_8, "New user? Click here to Register", New Vector2(278, 380), Color.LightGray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
-        End If
         Globals.SpriteBatch.End()
     End Sub
 
@@ -216,14 +174,10 @@ Public Class changePasswordForm
     End Sub
     ' Deactive all forms
     Private Sub deactivateAll()
-        emailActive = False
         passwordActive = False
     End Sub
     ' Function to retrieve the string in the active form
     Private Function getActiveString() As String
-        If emailActive = True Then
-            Return emailString
-        End If
         If passwordActive = True Then
             Return passwordString
         End If
@@ -232,53 +186,12 @@ Public Class changePasswordForm
     End Function
     ' Updates the active sting value after keyboard input
     Private Sub setActiveString(keyboardInput As String)
-        If emailActive = True Then
-            emailString = keyboardInput
-        End If
         If passwordActive = True Then
             passwordString = keyboardInput
         End If
     End Sub
     ' Deserialize userinfo
     Private Sub deserializeUserInfo()
-        ' Check to see if the JSON Exists
-        If Not My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "/accounts/" & emailString & ".json") Then
-            emailError = True
-            Exit Sub
-        End If
-
-        Dim allPassed As Boolean = True
-        emailError = False
-        passwordError = False
-
-        ' Check for empty Forms
-        If emailString = "" Then
-            emailError = True
-            allPassed = False
-        End If
-        If passwordString = "" Then
-            passwordError = True
-            allPassed = False
-        End If
-
-        ' deserialize JSON directly from a file
-        Dim data As userInfo
-        Using stream As StreamReader = File.OpenText(My.Application.Info.DirectoryPath & "/accounts/" & emailString & ".json")
-            Dim serializer As New JsonSerializer()
-            data = serializer.Deserialize(stream, GetType(userInfo))
-        End Using
-
-        ' Check to see if passwords match
-        If Not passwordString = data.password Then
-            passwordError = True
-            allPassed = False
-        End If
-
-        If allPassed = True Then
-            deserializeObject.UserInfo(emailString)
-            ScreenManager.UnloadScreen("loginForm")
-            TitleScreen.ovrForm = False
-        End If
 
     End Sub
 End Class
