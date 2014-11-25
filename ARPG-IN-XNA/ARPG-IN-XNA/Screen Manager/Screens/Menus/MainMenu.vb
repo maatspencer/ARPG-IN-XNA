@@ -65,9 +65,11 @@
                                 Case 3
                                     If My.Settings.email = "" Then
                                         ScreenManager.AddScreen(New registerForm)
+                                        IsOver(3) = False
                                         TitleScreen.ovrForm = True
                                     Else
                                         ScreenManager.AddScreen(New accountForm)
+                                        IsOver(3) = False
                                         TitleScreen.ovrForm = True
                                     End If
                                 Case 4

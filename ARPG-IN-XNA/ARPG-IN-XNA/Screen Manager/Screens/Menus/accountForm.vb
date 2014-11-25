@@ -30,24 +30,24 @@ Public Class accountForm
 
         ' Continue Button
         ovrContinue = False
-        If x >= 370 And x <= 430 Then
-            If y >= 312 And y <= 332 Then
+        If x >= 440 And x <= 525 Then
+            If y >= 339 And y <= 360 Then
                 ovrContinue = True
             End If
         End If
 
         ' Not you Link
         ovrNotYou = False
-        If x >= 282 And x <= 442 Then
-            If y >= 268 And y <= 281 Then
+        If x >= 274 And x <= 375 Then
+            If y >= 300 And y <= 315 Then
                 ovrNotYou = True
             End If
         End If
 
         ' Change password Link
         ovrChangePassword = False
-        If x >= 282 And x <= 442 Then
-            If y >= 268 And y <= 281 Then
+        If x >= 274 And x <= 428 Then
+            If y >= 280 And y <= 295 Then
                 ovrChangePassword = True
             End If
         End If
@@ -88,9 +88,9 @@ Public Class accountForm
 
         ' Continue Button
         If ovrContinue = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Change Password Link
@@ -106,6 +106,10 @@ Public Class accountForm
         Else
             Globals.SpriteBatch.DrawString(Fonts.Arial_8, "Not you? Click here", New Vector2(278, Y + 0.7 * Height), Color.LightGray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 1)
         End If
+
+        ' Logged in as
+        Dim scale As Single = 250 / Fonts.LargeROTMG.MeasureString(Parameters.userInfo.userEmail).X ' Email always drawn at 250 pixels
+        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.userEmail, New Vector2(278, Y + 0.3 * Height), Color.LightGray, 0, New Vector2(0, 0), scale, SpriteEffects.None, 1)
 
 
         Globals.SpriteBatch.End()
