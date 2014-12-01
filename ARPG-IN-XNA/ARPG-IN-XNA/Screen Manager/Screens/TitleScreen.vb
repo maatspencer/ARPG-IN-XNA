@@ -109,12 +109,12 @@
         Globals.SpriteBatch.Draw(Textures.Icons, New Rectangle(0, 0, 32, 32), SoundIcon, Color.White)
 
         ' Guild
-        If Not Parameters.userinfo.guildName = vbNullString Then
+        If Not Parameters.userInfo.guildName = vbNullString Then
             Globals.SpriteBatch.Draw(Textures.Icons, New Rectangle(95, 10, 16, 16), guildIcon, Color.White, 0, New Vector2(0, 0), SpriteEffects.None, 1)
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, Parameters.userinfo.guildName, New Vector2(120, 8), Color.White, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, Parameters.userInfo.guildName, New Vector2(120, 8), Color.White, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
         End If
         ' Check to see if login data is cached
-        If Not Parameters.userinfo.userName = vbNullString Then
+        If Not Parameters.userInfo.username = vbNullString Then
             ' Logout
             If ovrLogout = False Then
                 Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "log out", New Vector2(730, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
@@ -123,7 +123,7 @@
             End If
 
             ' Email
-            Dim str = "logged in as " & Parameters.userinfo.userEmail
+            Dim str = "logged in as " & Parameters.userInfo.email
             Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, str, New Vector2(720 - Fonts.SmallROTMG.MeasureString(str).X * 1.2, 8), Color.LightGray, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
 
         Else
@@ -151,11 +151,28 @@
 
         ' Stars Menu
         Globals.SpriteBatch.Draw(Textures.TransStarMenu, New Rectangle(33, 5, 39, 25), New Rectangle(0, 0, 39, 25), Color.White * 0.9)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userinfo.playerStars, New Vector2(37, 5), Color.Gray, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
-        Globals.SpriteBatch.Draw(Textures.BlankStar, New Rectangle(60, 8, 18, 18), New Rectangle(0, 0, 18, 17), Parameters.starColor)
+        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.playerStars, New Vector2(37, 5), Color.Gray, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+        ' Star Color
+        Dim starColor As Color
+        Select Case Parameters.userInfo.playerStars
+            Case Is <= 13
+                starColor = New Color(138, 150, 222)
+            Case Is <= 27
+                starColor = New Color(48, 77, 219)
+            Case Is <= 41
+                starColor = New Color(191, 38, 43)
+            Case Is <= 55
+                starColor = New Color(247, 149, 30)
+            Case Is <= 69
+                starColor = New Color(255, 255, 0)
+            Case Else
+                starColor = New Color(255, 255, 255)
+        End Select
+
+        Globals.SpriteBatch.Draw(Textures.BlankStar, New Rectangle(60, 8, 18, 18), New Rectangle(0, 0, 18, 17), starColor)
         If DrawStars = True Then
             Globals.SpriteBatch.Draw(Textures.StarsMenu, New Rectangle(Input.mMapX, Input.mMapY, 199, 192), Color.White)
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userinfo.playerStars, New Vector2(Input.mMapX + 120, Input.mMapY + 11), Color.LightGray, 0, New Vector2(0, 0), 0.5, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.playerStars, New Vector2(Input.mMapX + 120, Input.mMapY + 11), Color.LightGray, 0, New Vector2(0, 0), 0.5, SpriteEffects.None, 0)
         End If
 
         ' Version Number
@@ -174,22 +191,25 @@
         My.Settings.Save()
 
         ' Update Globals
-        Parameters.userInfo.userEmail = ""
-        Parameters.userInfo.userPassword = ""
-        Parameters.userInfo.userName = ""
+        Dim data As New userInfo
+        data.email = ""
+        data.password = ""
+        data.username = ""
 
-        Parameters.userInfo.userDOB = ""
-        Parameters.userInfo.userGold = 100
+        data.DOB = ""
+        data.userGold = 100
 
-        Parameters.userInfo.playerStars = 0
-        Parameters.userInfo.playerFame = 0
-        Parameters.userInfo.playerExp = 0
+        data.playerStars = 0
+        data.playerFame = 0
+        data.playerExp = 0
 
-        Parameters.userInfo.guildRank = 5
-        Parameters.userInfo.guildName = ""
+        data.guildRank = 5
+        data.guildName = ""
 
-        Parameters.userInfo.emailOffers = False
-        Parameters.userInfo.createdDate = DateAndTime.Today
+        data.emailOffers = False
+        data.CreatedDate = DateAndTime.Today
+
+        Parameters.userInfo = data
 
     End Sub
 

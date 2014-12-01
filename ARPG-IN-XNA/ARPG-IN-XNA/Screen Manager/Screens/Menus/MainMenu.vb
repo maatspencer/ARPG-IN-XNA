@@ -58,6 +58,9 @@
                                 Case 0
                                     Process.Start("https://github.com/maat7043/ARPG-IN-XNA")
                                 Case 1
+                                    ScreenManager.UnloadScreen("TitleScreen")
+                                    ScreenManager.UnloadScreen("MainMenu")
+                                    ScreenManager.AddScreen(New serverSelection)
                                 Case 2
                                     ScreenManager.UnloadScreen("TitleScreen")
                                     ScreenManager.UnloadScreen("MainMenu")

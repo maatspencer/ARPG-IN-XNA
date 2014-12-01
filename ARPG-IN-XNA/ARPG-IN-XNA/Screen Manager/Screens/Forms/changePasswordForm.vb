@@ -244,7 +244,7 @@ Public Class changePasswordForm
 
         ' deserialize JSON
         Dim data As New userInfo
-        Using stream As StreamReader = File.OpenText(My.Application.Info.DirectoryPath & "/accounts/" & Parameters.userInfo.userEmail & ".json")
+        Using stream As StreamReader = File.OpenText(My.Application.Info.DirectoryPath & "/accounts/" & Parameters.userInfo.email & ".json")
             Dim serializer As New JsonSerializer()
             data = serializer.Deserialize(stream, GetType(userInfo))
         End Using
@@ -277,7 +277,7 @@ Public Class changePasswordForm
             serializeObject.userInfo(data)
 
             ' Update Globals
-            Parameters.userInfo.userPassword = data.password
+            Parameters.userInfo.password = data.password
 
             ' close form
             ScreenManager.UnloadScreen("changePassword")

@@ -108,8 +108,8 @@ Public Class accountForm
         End If
 
         ' Logged in as
-        Dim scale As Single = 250 / Fonts.LargeROTMG.MeasureString(Parameters.userInfo.userEmail).X ' Email always drawn at 250 pixels
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.userEmail, New Vector2(278, Y + 0.3 * Height), Color.LightGray, 0, New Vector2(0, 0), scale, SpriteEffects.None, 1)
+        Dim scale As Single = 250 / Fonts.LargeROTMG.MeasureString(Parameters.userInfo.email).X ' Email always drawn at 250 pixels
+        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.email, New Vector2(278, Y + 0.3 * Height), Color.LightGray, 0, New Vector2(0, 0), scale, SpriteEffects.None, 1)
 
 
         Globals.SpriteBatch.End()

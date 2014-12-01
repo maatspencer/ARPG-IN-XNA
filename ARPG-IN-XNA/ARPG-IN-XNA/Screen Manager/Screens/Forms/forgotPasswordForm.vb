@@ -29,10 +29,6 @@ Public Class forgotPassword
     ' Keyboard input
     Public Shared textString As String = ""
 
-    ' Threading for email
-    Private trd As Thread
-    Private data As userInfo
-
     Public Sub New()
         Name = "forgotPassword"
         State = ScreenState.Active
@@ -202,42 +198,24 @@ Public Class forgotPassword
         End If
 
         ' deserialize JSON
+        Dim data As userInfo
         Using stream As StreamReader = File.OpenText(My.Application.Info.DirectoryPath & "/accounts/" & emailString & ".json")
             Dim serializer As New JsonSerializer()
             data = serializer.Deserialize(stream, GetType(userInfo))
         End Using
 
-        ' Send Email
-        trd = New Thread(AddressOf SendMail)
-        trd.IsBackground = True
-        trd.Start()
-
-        ScreenManager.UnloadScreen("forgotPassword")
-        TitleScreen.ovrForm = False
-    End Sub
-    Private Sub SendMail()
-        ' SMTP options
-        Dim Host As String = "smtp.gmail.com"
-        Dim Port As Int16 = 587
-        Dim SSL As Boolean = True
-        Dim Username As String = "arpg.in.xna@gmail.com"
-        Dim Password As String = "Civilengineering#1"
-
-        ' Mail options
+        ' Mail Options
         Dim [To] As String = emailString
         Dim From As String = "arpg.in.xna@gmail.com"
         Dim Subject As String = "ARPG-IN-XNA"
         Dim Body As String = "email: " & data.email & vbNewLine & "password: " & data.password
         Dim mm As New MailMessage(From, [To], Subject, Body)
 
-        ' Send Async
-        Dim sc As SmtpClient = New SmtpClient(Host, Port)
-        sc.EnableSsl = SSL
-        sc.UseDefaultCredentials = False
-        Dim netCred As New NetworkCredential(Username, Password)
-        sc.Credentials = netCred
-        sc.Send(mm)
+        ' Send email
+        gmailSMTP.asyncClient(mm)
 
-        trd.Abort()
+        ScreenManager.UnloadScreen("forgotPassword")
+        TitleScreen.ovrForm = False
     End Sub
+
 End Class

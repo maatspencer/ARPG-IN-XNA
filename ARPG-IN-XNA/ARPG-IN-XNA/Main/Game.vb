@@ -1,4 +1,3 @@
-Imports System.Windows.Forms
 Public Class Game
     Inherits Microsoft.Xna.Framework.Game
     Private ScreenManager As ScreenManager
@@ -19,10 +18,7 @@ Public Class Game
 
         Globals.BackBuffer = New RenderTarget2D(Globals.Graphics.GraphicsDevice, Globals.GameSize.X, Globals.GameSize.Y, False, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents)
 
-        If Not My.Settings.email = "" Then
-            deserializeObject.UserInfo(My.Settings.email)
-        End If
-
+        Events.initialize()
         MyBase.Initialize()
     End Sub
 
@@ -38,8 +34,6 @@ Public Class Game
         ' Add Default Screens
         ScreenManager = New ScreenManager
         ScreenManager.AddScreen(New LoadingTitle)
-
-
     End Sub
     Protected Overrides Sub Update(ByVal gameTime As GameTime)
         ' TODO: Add your update logic here
@@ -56,9 +50,6 @@ Public Class Game
 
         ' Sound Updates
         Sounds.Update()
-
-        ' Information Update
-        Parameters.Update()
     End Sub
 
     Protected Overrides Sub Draw(ByVal gameTime As GameTime)
