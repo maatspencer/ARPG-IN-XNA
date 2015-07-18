@@ -135,7 +135,7 @@ Public Class changePasswordForm
         Dim Height = Textures.changePasswordForm.Height
 
         ' Main Form
-        Globals.SpriteBatch.Draw(Textures.changePasswordForm, New Rectangle(X, Y, Width, Height), Color.White)
+        Globals.SpriteBatch.Draw(Textures.changePasswordForm, New Rectangle(X, Y, Width, Height), Color.White * Textures.formOpacity)
 
         ' Error Boxes
         If passwordError = True Then
@@ -157,44 +157,44 @@ Public Class changePasswordForm
         ' Draw Cursor at active location
         If drawCur = True Then ' Toggle cursor on and off
             If passwordActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.LargeROTMG, 0.9, 215, passwordXCord)
+                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.WascoSans_16, 0.9, 215, passwordXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 225, 2, 18), Color.LightGray)
             End If
             If newActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(newString, Fonts.LargeROTMG, 0.9, 215, newXcord)
+                Dim cursorLocation = textHandler.cursorLocation(newString, Fonts.WascoSans_16, 0.9, 215, newXcord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 312, 2, 18), Color.LightGray)
             End If
             If retypeActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(retypeString, Fonts.LargeROTMG, 0.9, 215, retypeXcord)
+                Dim cursorLocation = textHandler.cursorLocation(retypeString, Fonts.WascoSans_16, 0.9, 215, retypeXcord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 401, 2, 18), Color.LightGray)
             End If
         End If
 
         ' Cancel Button
         If ovrCancel = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Submit Button
         If ovrSubmit = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Submit", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Submit", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Submit", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Submit", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Password String
-        Dim cutString As String = textHandler.wordWrap(passwordString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(passwordXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Dim cutString As String = textHandler.wordWrap(passwordString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(passwordXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' New Password String
-        cutString = textHandler.wordWrap(newString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(newXcord, 307), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        cutString = textHandler.wordWrap(newString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(newXcord, 307), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Retype Password String
-        cutString = textHandler.wordWrap(retypeString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(retypeXcord, 396), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        cutString = textHandler.wordWrap(retypeString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(retypeXcord, 396), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         Globals.SpriteBatch.End()
     End Sub

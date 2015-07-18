@@ -84,13 +84,13 @@ Public Class accountForm
         Dim Height = Textures.currentAccountForm.Height
 
         ' Main Form
-        Globals.SpriteBatch.Draw(Textures.currentAccountForm, New Rectangle(X, Y, Width, Height), Color.White)
+        Globals.SpriteBatch.Draw(Textures.currentAccountForm, New Rectangle(X, Y, Width, Height), Color.White * Textures.formOpacity)
 
         ' Continue Button
         If ovrContinue = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Continue", New Vector2(X + 0.65 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Change Password Link
@@ -108,8 +108,8 @@ Public Class accountForm
         End If
 
         ' Logged in as
-        Dim scale As Single = 250 / Fonts.LargeROTMG.MeasureString(Parameters.userInfo.email).X ' Email always drawn at 250 pixels
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.email, New Vector2(278, Y + 0.3 * Height), Color.LightGray, 0, New Vector2(0, 0), scale, SpriteEffects.None, 1)
+        Dim scale As Single = 250 / Fonts.WascoSans_16.MeasureString(Parameters.userInfo.email).X ' Email always drawn at 250 pixels
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Parameters.userInfo.email, New Vector2(278, Y + 0.3 * Height), Color.LightGray, 0, New Vector2(0, 0), scale, SpriteEffects.None, 1)
 
 
         Globals.SpriteBatch.End()

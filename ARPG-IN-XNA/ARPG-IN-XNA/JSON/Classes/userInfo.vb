@@ -1,6 +1,4 @@
 ﻿Public Class userInfo
-
-
     ' User Name
     Public Property username() As String
         Get
@@ -132,5 +130,16 @@
         End Set
     End Property
     Private m_guildName As String
+
+    ' Character Keys in CSV Format
+    Public Property characters() As String
+        Get
+            Return m_characters
+        End Get
+        Set(value As String)
+            m_characters = value
+        End Set
+    End Property
+    Private m_characters As String
 End Class
 

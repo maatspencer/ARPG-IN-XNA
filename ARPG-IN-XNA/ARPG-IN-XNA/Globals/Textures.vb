@@ -1,4 +1,7 @@
 ﻿Public Class Textures
+    ' Form Variables
+    Public Shared formOpacity As Single = 0.7
+
     'General
     Public Shared WhiteSquare As Texture2D
     Public Shared Icons As Texture2D
@@ -26,6 +29,9 @@
     Public Shared Tileset2 As Texture2D
     Public Shared Tileset3 As Texture2D
     Public Shared Tileset4 As Texture2D
+
+    'Info Overlay
+    Public Shared goldFame As Texture2D
 
     'Character Sprites
     Public Shared Classes As Texture2D
@@ -58,6 +64,9 @@
         Tileset2 = Globals.Content.Load(Of Texture2D)("GFX/World/Tile2")
         Tileset3 = Globals.Content.Load(Of Texture2D)("GFX/World/Tile3")
         Tileset4 = Globals.Content.Load(Of Texture2D)("GFX/World/Tile4")
+
+        ' Info Overlay
+        goldFame = Globals.Content.Load(Of Texture2D)("GFX/Overlay/goldFame")
 
         'Character Sprites
         Classes = Globals.Content.Load(Of Texture2D)("GFX/Classes/Classes")

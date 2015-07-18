@@ -63,7 +63,7 @@
             IsClick = "False"
         End If
 
-        TextHeight = Fonts.Arial_8.MeasureString(fps).Y * 6
+        TextHeight = Fonts.Arial_8.MeasureString(fps).Y * 7
         BGRect = New Rectangle(0, 0, Textwidth + 20, TextHeight + 20)
 
     End Sub
@@ -88,6 +88,7 @@
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, MousePos, New Vector2(10, 46), Color.White)
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, Input.mAngle, New Vector2(10, 58), Color.White)
         Globals.SpriteBatch.DrawString(Fonts.Arial_8, IsClick, New Vector2(10, 70), Color.White)
+        Globals.SpriteBatch.DrawString(Fonts.Arial_8, Parameters.userInfo.guildRank, New Vector2(10, 82), Color.White)
         Globals.SpriteBatch.End()
 
     End Sub

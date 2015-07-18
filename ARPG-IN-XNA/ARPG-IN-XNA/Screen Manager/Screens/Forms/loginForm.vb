@@ -149,7 +149,7 @@ Public Class loginForm
         Dim Height = Textures.loginForm.Height
 
         ' Main Form
-        Globals.SpriteBatch.Draw(Textures.loginForm, New Rectangle(X, Y, Width, Height), Color.White)
+        Globals.SpriteBatch.Draw(Textures.loginForm, New Rectangle(X, Y, Width, Height), Color.White * Textures.formOpacity)
 
         ' Error Boxes
         If emailError = True Then
@@ -168,37 +168,37 @@ Public Class loginForm
         ' Draw Cursor at active location
         If drawCur = True Then ' Toggle cursor on and off
             If emailActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.LargeROTMG, 0.9, 215, emailXCord)
+                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.WascoSans_16, 0.9, 215, emailXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 225, 2, 18), Color.LightGray)
             End If
             If passwordActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.LargeROTMG, 0.9, 215, passwordXCord)
+                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.WascoSans_16, 0.9, 215, passwordXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 312, 2, 18), Color.LightGray)
             End If
         End If
 
         ' Cancel Button
         If ovrCancel = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Sign-In Button
         If ovrSignIn = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Sign in", New Vector2(X + 0.7 * Width, Y + 0.85 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
 
         ' Email String
-        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(emailXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(emailXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Password String
-        cutString = textHandler.wordWrap(passwordString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(passwordXCord, 307), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        cutString = textHandler.wordWrap(passwordString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(passwordXCord, 307), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Forgot password
         If ovrForgot = True Then
@@ -247,7 +247,7 @@ Public Class loginForm
     ' Deserialize userinfo
     Private Sub deserializeUserInfo()
         ' Check to see if the JSON Exists
-        If Not My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "/accounts/" & emailString & ".json") Then
+        If Not My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "/AppData/accounts/" & emailString & ".json") Then
             emailError = True
             Exit Sub
         End If

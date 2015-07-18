@@ -4,7 +4,9 @@
     Public Position As Single
     Public Focused As Boolean = False
     Public GrabFocus As Boolean = True
+    Public Overridable Sub AddObjects()
 
+    End Sub
     Public Overridable Sub HandleInput()
 
     End Sub

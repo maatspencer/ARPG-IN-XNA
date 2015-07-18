@@ -257,7 +257,7 @@ Public Class registerForm
         Dim Height = Textures.registerForm.Height
 
         ' Main Form
-        Globals.SpriteBatch.Draw(Textures.registerForm, New Rectangle(X, Y, Width, Height), Color.White)
+        Globals.SpriteBatch.Draw(Textures.registerForm, New Rectangle(X, Y, Width, Height), Color.White * Textures.formOpacity)
 
         ' Error Boxes
         If emailError = True Then
@@ -288,79 +288,79 @@ Public Class registerForm
         ' Draw Cursor at active location
         If drawCur = True Then ' Toggle cursor on and off
             If emailActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.LargeROTMG, 0.9, 260, emailXCord)
+                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.WascoSans_16, 0.9, 260, emailXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 130, 2, 18), Color.LightGray)
             End If
             If passwordActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.LargeROTMG, 0.9, 260, passwordXCord)
+                Dim cursorLocation = textHandler.cursorLocation(passwordString, Fonts.WascoSans_16, 0.9, 260, passwordXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 198, 2, 18), Color.LightGray)
             End If
             If retypeActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(retypeString, Fonts.LargeROTMG, 0.9, 260, retypeXCord)
+                Dim cursorLocation = textHandler.cursorLocation(retypeString, Fonts.WascoSans_16, 0.9, 260, retypeXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 265, 2, 18), Color.LightGray)
             End If
             If monthActive = True Then
-                Dim cursorLocation = 264 + Fonts.SmallROTMG.MeasureString(monthString).X * 1.3
+                Dim cursorLocation = 264 + Fonts.WascoSans_12.MeasureString(monthString).X
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 328, 2, 15), Color.LightGray)
             End If
             If dayActive = True Then
-                Dim cursorLocation = 322 + Fonts.LargeROTMG.MeasureString(dayString).X * 1.3
+                Dim cursorLocation = 322 + Fonts.WascoSans_16.MeasureString(dayString).X
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 328, 2, 15), Color.LightGray)
             End If
             If yearActive = True Then
-                Dim cursorLocation = 375 + Fonts.LargeROTMG.MeasureString(yearString).X * 1.3
+                Dim cursorLocation = 375 + Fonts.WascoSans_16.MeasureString(yearString).X
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 328, 2, 15), Color.LightGray)
             End If
         End If
 
         ' Cancel Button
         If ovrCancel = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Register Button
         If ovrRegister = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Register", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Register", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Register", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Register", New Vector2(X + 0.7 * Width, Y + 0.9 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Day/Month/Year Place Holders
         If monthString = "" Then
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "MM", New Vector2(X + 25, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "MM", New Vector2(X + 25, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
         End If
         If dayString = "" Then
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "DD", New Vector2(X + 85, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "DD", New Vector2(X + 85, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
         End If
         If yearString = "" Then
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "YYYY", New Vector2(X + 140, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "YYYY", New Vector2(X + 140, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
         End If
 
         ' Offer Box
         If offersClicked = True Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "X", New Vector2(263, 354), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "X", New Vector2(263, 354), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
         End If
 
         ' Email String
-        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.LargeROTMG, 0.9, 260)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(emailXCord, 125), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.WascoSans_16, 0.9, 260)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(emailXCord, 125), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Password String
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, passwordString, New Vector2(passwordXCord, 192), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, passwordString, New Vector2(passwordXCord, 192), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Retype String
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, retypeString, New Vector2(retypeXCord, 260), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, retypeString, New Vector2(retypeXCord, 260), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' Month
-        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, monthString, New Vector2(X + 25, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, monthString, New Vector2(X + 25, Y + 280), Color.Gray)
 
         ' Day
-        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, dayString, New Vector2(X + 85, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, dayString, New Vector2(X + 85, Y + 280), Color.Gray)
 
         ' Year
-        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, yearString, New Vector2(X + 140, Y + 280), Color.Gray, 0, New Vector2(0, 0), 1.3, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, yearString, New Vector2(X + 140, Y + 280), Color.Gray)
 
         Globals.SpriteBatch.End()
     End Sub
@@ -525,6 +525,8 @@ Public Class registerForm
 
             data.emailOffers = offersClicked
             data.CreatedDate = DateAndTime.Today
+
+            data.characters = ""
 
             ' Serialize the object and write to a file
             serializeObject.userInfo(data)

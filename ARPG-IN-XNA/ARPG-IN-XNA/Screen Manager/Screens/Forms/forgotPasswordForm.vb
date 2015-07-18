@@ -118,7 +118,7 @@ Public Class forgotPassword
         Dim Height = Textures.forgotPasswordForm.Height
 
         ' Main Form
-        Globals.SpriteBatch.Draw(Textures.forgotPasswordForm, New Rectangle(X, Y, Width, Height), Color.White)
+        Globals.SpriteBatch.Draw(Textures.forgotPasswordForm, New Rectangle(X, Y, Width, Height), Color.White * Textures.formOpacity)
 
         ' Error Boxes
         If emailError = True Then
@@ -134,29 +134,29 @@ Public Class forgotPassword
         ' Draw Cursor at active location
         If drawCur = True Then ' Toggle cursor on and off
             If emailActive = True Then
-                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.LargeROTMG, 0.9, 215, emailXCord)
+                Dim cursorLocation = textHandler.cursorLocation(emailString, Fonts.WascoSans_16, 0.9, 215, emailXCord)
                 Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(cursorLocation, 225, 2, 18), Color.LightGray)
             End If
         End If
 
         ' Cancel Button
         If ovrCancel = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.8 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.8 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.8 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Cancel", New Vector2(X + 0.4 * Width, Y + 0.8 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
         ' Submit Button
         If ovrSubmit = False Then
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Submit", New Vector2(X + 0.7 * Width, Y + 0.8 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Submit", New Vector2(X + 0.7 * Width, Y + 0.8 * Height), Color.White, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         Else
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "Submit", New Vector2(X + 0.7 * Width, Y + 0.8 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "Submit", New Vector2(X + 0.7 * Width, Y + 0.8 * Height), Color.LightBlue, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
         End If
 
 
         ' Email String
-        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.LargeROTMG, 0.9, 215)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, cutString, New Vector2(emailXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
+        Dim cutString As String = textHandler.wordWrap(emailString, Fonts.WascoSans_16, 0.9, 215)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, cutString, New Vector2(emailXCord, 220), Color.Gray, 0, New Vector2(0, 0), 0.9, SpriteEffects.None, 0)
 
         ' New User Link
         If ovrNewUser = True Then

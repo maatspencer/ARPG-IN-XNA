@@ -6,13 +6,22 @@ Imports System.Threading
 Public Class UserGeoLocator
     Private Shared urlString = "http://www.telize.com/geoip/"
     Private Shared geoData As geoData
-    Private Shared trd As Thread
+    Public Shared trd As Thread
 
     Public Shared Sub asyncWebclient()
         trd = New Thread(AddressOf getGeoData)
         trd.IsBackground = True
         trd.Start()
     End Sub
+    Public Shared Function bestServer() As server
+        ' temp until servers are used
+        Dim server As server = New server
+        server.name = "local host"
+        server.ip = "127.0.0.1"
+        server.latitude = 0
+        server.longitude = 0
+        Return server
+    End Function
 
     Private Shared Function GetUserIP() As String
         Using wc As New WebClient

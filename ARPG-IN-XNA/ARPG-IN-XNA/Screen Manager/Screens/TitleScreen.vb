@@ -9,7 +9,6 @@
     Private ovrLogout = False
     Private ovrLogin = False
     Private ovrRegister = False
-    Private scrollX As Integer = 0
     Public Shared ovrForm = False
 
     Public Sub New()
@@ -17,9 +16,6 @@
         State = ScreenState.Active
     End Sub
     Public Overrides Sub HandleInput()
-        ' Adjust Scroll
-        scrollX = (scrollX + 1) Mod 1120
-
         ' Toggle Sound
         If Input.mMapX >= 0 And Input.mMapX <= 32 Then
             If Input.mMapY >= 0 And Input.mMapY <= 32 Then
@@ -51,7 +47,7 @@
         ' Verify a form is not currently open
         If ovrForm = False Then
             ' Login/Register options
-            If Not Parameters.userInfo.userName = vbNullString Then
+            If Not Parameters.userInfo.username = vbNullString Then
                 ' Logout Button
                 If Input.mMapX >= 730 And Input.mMapX <= 790 Then
                     If Input.mMapY <= 25 Then
@@ -104,54 +100,53 @@
     Public Overrides Sub Draw()
         Globals.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone)
 
-        Globals.SpriteBatch.Draw(Textures.Scrolling, New Rectangle(0, 0, Globals.GameSize.X, Globals.GameSize.Y), New Rectangle(scrollX, 0, 800, 600), Color.White, 0, New Vector2(0, 0), SpriteEffects.None, 1)
         ' Speaker Icon
         Globals.SpriteBatch.Draw(Textures.Icons, New Rectangle(0, 0, 32, 32), SoundIcon, Color.White)
 
         ' Guild
         If Not Parameters.userInfo.guildName = vbNullString Then
             Globals.SpriteBatch.Draw(Textures.Icons, New Rectangle(95, 10, 16, 16), guildIcon, Color.White, 0, New Vector2(0, 0), SpriteEffects.None, 1)
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, Parameters.userInfo.guildName, New Vector2(120, 8), Color.White, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, Parameters.userInfo.guildName, New Vector2(120, 6), Color.White)
         End If
         ' Check to see if login data is cached
         If Not Parameters.userInfo.username = vbNullString Then
             ' Logout
             If ovrLogout = False Then
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "log out", New Vector2(730, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "log out", New Vector2(730, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             Else
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "log out", New Vector2(730, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "log out", New Vector2(730, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             End If
 
             ' Email
             Dim str = "logged in as " & Parameters.userInfo.email
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, str, New Vector2(720 - Fonts.SmallROTMG.MeasureString(str).X * 1.2, 8), Color.LightGray, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, str, New Vector2(720 - Fonts.WascoSans_12.MeasureString(str).X, 6), Color.LightGray)
 
         Else
             'Guest
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "guest account -", New Vector2(510, 8), Color.LightGray, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "guest account  -", New Vector2(510, 6), Color.LightGray)
 
             'Register
             If ovrRegister = False Then
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "register", New Vector2(645, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "register", New Vector2(645, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             Else
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "register", New Vector2(645, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "register", New Vector2(645, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             End If
 
             ' "-" seperation character
-            Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "-", New Vector2(720, 8), Color.LightGray, 0, New Vector2(0, 0), 1.2, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "-", New Vector2(720, 6), Color.LightGray)
 
             'Login
             If ovrLogin = False Then
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "login", New Vector2(740, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "login", New Vector2(740, 4), Color.White, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             Else
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, "login", New Vector2(740, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, "login", New Vector2(740, 4), Color.LightBlue, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
             End If
 
         End If
 
         ' Stars Menu
-        Globals.SpriteBatch.Draw(Textures.TransStarMenu, New Rectangle(33, 5, 39, 25), New Rectangle(0, 0, 39, 25), Color.White * 0.9)
-        Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.playerStars, New Vector2(37, 5), Color.Gray, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
+        Globals.SpriteBatch.Draw(Textures.TransStarMenu, New Rectangle(33, 5, 39, 25), New Rectangle(0, 0, 39, 25), Color.White * Textures.formOpacity)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Parameters.userInfo.playerStars, New Vector2(37, 5), Color.Gray, 0, New Vector2(0, 0), 0.8, SpriteEffects.None, 0)
         ' Star Color
         Dim starColor As Color
         Select Case Parameters.userInfo.playerStars
@@ -172,11 +167,11 @@
         Globals.SpriteBatch.Draw(Textures.BlankStar, New Rectangle(60, 8, 18, 18), New Rectangle(0, 0, 18, 17), starColor)
         If DrawStars = True Then
             Globals.SpriteBatch.Draw(Textures.StarsMenu, New Rectangle(Input.mMapX, Input.mMapY, 199, 192), Color.White)
-            Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Parameters.userInfo.playerStars, New Vector2(Input.mMapX + 120, Input.mMapY + 11), Color.LightGray, 0, New Vector2(0, 0), 0.5, SpriteEffects.None, 0)
+            Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Parameters.userInfo.playerStars, New Vector2(Input.mMapX + 122, Input.mMapY + 13), Color.LightGray, 0, New Vector2(0, 0), 0.5, SpriteEffects.None, 0)
         End If
 
         ' Version Number
-        Globals.SpriteBatch.DrawString(Fonts.SmallROTMG, "ARPG-IN-XNA " & Parameters.Version, New Vector2(5, 585), Color.Gray, 0, New Vector2(0, 0), 1, SpriteEffects.None, 0)
+        Globals.SpriteBatch.DrawString(Fonts.WascoSans_12, "ARPG-IN-XNA " & Parameters.Version, New Vector2(5, 585), Color.LightGray, 0, New Vector2(0, 0), 0.7, SpriteEffects.None, 0)
 
         Globals.SpriteBatch.End()
     End Sub

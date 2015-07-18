@@ -44,8 +44,8 @@
         RegionX = MenuPos.X + 137
         For X = 0 To 4
             RegionY = MenuPos.Y
-            RegionWidth = Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).X
-            RegionHeight = Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).Y
+            RegionWidth = Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).X
+            RegionHeight = Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).Y
             If X = 2 Then
                 RegionY = MenuPos.Y - 7
                 RegionHeight = RegionHeight * Scale
@@ -61,10 +61,11 @@
                                     ScreenManager.UnloadScreen("TitleScreen")
                                     ScreenManager.UnloadScreen("MainMenu")
                                     ScreenManager.AddScreen(New serverSelection)
+                                    ScreenManager.AddScreen(New TitleScreen)
                                 Case 2
-                                    ScreenManager.UnloadScreen("TitleScreen")
                                     ScreenManager.UnloadScreen("MainMenu")
-                                    ScreenManager.AddScreen(New WorldScreen)
+                                    ScreenManager.AddScreen(New characterSelection)
+                                    ScreenManager.AddScreen(New TitleScreen)
                                 Case 3
                                     If My.Settings.email = "" Then
                                         ScreenManager.AddScreen(New registerForm)
@@ -84,7 +85,7 @@
                 Else : IsOver(X) = False
                 End If
             End If
-            RegionX += Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).X + 30
+            RegionX += Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).X + 30
         Next
 
     End Sub
@@ -105,21 +106,21 @@
     Public Overrides Sub Draw()
         Globals.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone)
         ' Draw Menu Graphics
+        Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(MenuPos.X, MenuPos.Y, MenuSize.X, MenuSize.Y), New Color(97, 97, 97) * Textures.formOpacity)
 
         ' Draw Menu Options
         Dim MenuX As Integer = MenuPos.X + 137
-        Globals.SpriteBatch.Draw(Textures.WhiteSquare, New Rectangle(MenuPos.X, MenuPos.Y, MenuSize.X, MenuSize.Y), New Color(97, 97, 97))
         For X = 0 To 4
             If IsOver(X) = True Then Color = Color.LightBlue Else If X = 0 Then Color = Color.SteelBlue Else Color = Color.White
             If X = MenuSelect Then
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Entries.Item(X).Text, New Vector2(MenuX - (Fonts.LargeROTMG.MeasureString(X).X * (Scale - 1)) / 2, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).Y) / 2 - 7), Color, 0, New Vector2(0, 0), Scale, SpriteEffects.None, 1)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Entries.Item(X).Text, New Vector2(MenuX - (Fonts.WascoSans_16.MeasureString(X).X * (Scale - 1)) / 2, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).Y) / 2 - 7), Color, 0, New Vector2(0, 0), Scale, SpriteEffects.None, 1)
             ElseIf Entries.Item(X).Enabled = True Then
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Entries.Item(X).Text, New Vector2(MenuX, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).Y / 2)), Color)
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Entries.Item(X).Text, New Vector2(MenuX, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).Y / 2)), Color)
             Else
-                Globals.SpriteBatch.DrawString(Fonts.LargeROTMG, Entries.Item(X).Text, New Vector2(MenuX, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).Y / 2)), New Color(153, 151, 0))
+                Globals.SpriteBatch.DrawString(Fonts.WascoSans_16, Entries.Item(X).Text, New Vector2(MenuX, MenuPos.Y + (MenuSize.Y / 2) - (Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).Y / 2)), New Color(153, 151, 0))
             End If
 
-            MenuX += Fonts.LargeROTMG.MeasureString(Entries.Item(X).Text).X + 30
+            MenuX += Fonts.WascoSans_16.MeasureString(Entries.Item(X).Text).X + 30
         Next
 
         Globals.SpriteBatch.End()

@@ -104,6 +104,7 @@
     <Compile Include="Globals\Parameters.vb" />
     <Compile Include="Globals\Input.vb" />
     <Compile Include="Globals\textHandler.vb" />
+    <Compile Include="JSON\Classes\characters.vb" />
     <Compile Include="JSON\Classes\geoData.vb" />
     <Compile Include="JSON\Classes\server.vb" />
     <Compile Include="JSON\deserializeObject.vb" />
@@ -114,6 +115,7 @@
     <Compile Include="Main\Events.vb" />
     <Compile Include="Main\Menus\MenuEntry.vb" />
     <Compile Include="Main\Menus\MenuGFX.vb" />
+    <Compile Include="Main\Tasks\Local\randomString.vb" />
     <Compile Include="Main\Tasks\Web\gmailSMTP.vb" />
     <Compile Include="Main\Tasks\Web\userGeoLocator.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,7 +128,9 @@
     </Compile>
     <Compile Include="Screen Manager\BaseScreen.vb" />
     <Compile Include="Screen Manager\ScreenManager.vb" />
-    <Compile Include="Screen Manager\Screens\Menus\ClassSelection.vb" />
+    <Compile Include="Screen Manager\Screens\Menus\characterSelection.vb" />
+    <Compile Include="Screen Manager\Screens\Parallax.vb" />
+    <Compile Include="Screen Manager\Screens\Menus\classSelection.vb" />
     <Compile Include="Screen Manager\Screens\Debug.vb" />
     <Compile Include="Screen Manager\Screens\LoadingTitle.vb" />
     <Compile Include="Screen Manager\Screens\Forms\changePasswordForm.vb" />
@@ -134,7 +138,7 @@
     <Compile Include="Screen Manager\Screens\Forms\forgotPasswordForm.vb" />
     <Compile Include="Screen Manager\Screens\Forms\loginForm.vb" />
     <Compile Include="Screen Manager\Screens\Menus\serverSelection.vb" />
-    <Compile Include="Screen Manager\Screens\Menus\MainMenu.vb" />
+    <Compile Include="Screen Manager\Screens\Menus\mainMenu.vb" />
     <Compile Include="Screen Manager\Screens\Forms\registerForm.vb" />
     <Compile Include="Screen Manager\Screens\TitleScreen.vb" />
     <Compile Include="Screen Manager\Screens\World\Character.vb" />
